@@ -253,7 +253,8 @@ export default class Telegram {
   }
 
   private generalAction(method: string, ctx: Context): void {
-    const data = ctx.update.callback_query?.data;
+    const ctxQuery: any = ctx.update.callback_query;
+    const data = (ctxQuery) ? ctxQuery['data'] : null;
     let gid = '';
 
     if (data) {
@@ -273,7 +274,8 @@ export default class Telegram {
 
   private onMessage(): void {
     this.bot.on('message', (ctx) => {
-      const inComingText = ctx.update.message?.text;
+      const ctxMessage: any = ctx.update.message;
+      const inComingText = (ctxMessage) ? ctxMessage['text'] : null;
 
       if (inComingText) {
         this.logger.info(`Received message from Telegram: ${inComingText}`);
@@ -322,7 +324,8 @@ export default class Telegram {
         }
       }
 
-      const document = ctx.update.message?.document;
+      const ctxUpdateMessage: any = ctx.update.message;
+      const document = (ctxUpdateMessage) ? ctxUpdateMessage['document'] : null;
 
       // Receive BT file
       if (document && document.file_name && isDownloadable(document.file_name)) {
@@ -346,7 +349,8 @@ export default class Telegram {
   private onAction(): void {
     // Match all actions
     this.bot.action(/.*/, (ctx) => {
-      const data = ctx.update.callback_query?.data;
+      const ctxCbQuery: any = ctx.update.callback_query;
+      const data = (ctxCbQuery) ? ctxCbQuery['data'] : null;
 
       if (!data) {
         return;
