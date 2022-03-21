@@ -60,6 +60,7 @@ export function getGidFromAction(action: string): string {
 // HTTP/FTP/SFTP/Magnet/BT file
 // https://stackoverflow.com/a/8061352
 export function isDownloadable(uri: string): boolean {
+  console.info(uri);
   const httpFtp = /^(https?|ftps?):\/\/.*$/;
 
   // https://stackoverflow.com/a/19707059

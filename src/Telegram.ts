@@ -300,10 +300,12 @@ export default class Telegram {
             this.remove(ctx);
             break;
           default:
-            if (isDownloadable(inComingText)) {
-              this.aria2Server.send('addUri', [[inComingText]]);
+            const ariaArguments = inComingText.split(' ');
+            const file = ariaArguments.shift() || inComingText;
+            if (isDownloadable(file)) {
+              this.aria2Server.send('addUri', [[file], ariaArguments.join(' ')]);
             } else {
-              this.logger.warn(`Unable to a parse the request: ${inComingText}`);
+              this.logger.warn(`Unable to a parse the request: ${file}`);
             }
         }
       }
@@ -362,7 +364,7 @@ export default class Telegram {
       ctx.replyWithMarkdown(
         'Welcome to tele-aria2 bot! 👏',
         Markup.inlineKeyboard([
-          Markup.urlButton('️GitHub Page', 'https://github.com/HouCoder/tele-aria2'),
+          Markup.urlButton('️GitHub Page', 'https://github.com/andre4nap/tele-aria2'),
           Markup.urlButton('Contact Author ', 'https://t.me/TonniHou'),
         ], { columns: 2 }).extra(),
       );

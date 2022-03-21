@@ -1,6 +1,6 @@
 # tele-aria2
 
-![Logo](https://raw.githubusercontent.com/HouCoder/tele-aria2/HEAD/images/logo.png)
+![Logo](https://raw.githubusercontent.com/andre4nap/tele-aria2/HEAD/images/logo.png)
 
 [![NPM Version][npm-image]][npm-url]
 [![Docker Image Size][docker-size]][docker-url]
@@ -8,7 +8,7 @@
 [![TypeScript Style Guide][gts-image]][gts-url]
 [![deps][deps]][deps-url]
 
-The newly rewritten project has a few advantages over [the old one](https://github.com/HouCoder/tele-aria2/tree/legacy-python):
+The newly rewritten project has a few advantages over [the old one](https://github.com//tele-aria2/tree/legacy-python):
 
 1. Fully touch based, more easy to use, no command required to use this bot.
 2. Real time notification, it's now using Aria2's Websocket protocol to communicate.
@@ -57,7 +57,7 @@ Need to add more users? no problem, just add `user-id` like this: `"user-id": "1
 
 Once your bot is up and running, go back to Telegram and click **Start**:
 
-<img src="https://raw.githubusercontent.com/HouCoder/tele-aria2/HEAD/images/tele-aria2.start.gif" alt="start" width="400px">
+<img src="https://raw.githubusercontent.com//tele-aria2/HEAD/images/tele-aria2.start.gif" alt="start" width="400px">
 
 As you can see, all the action menus are instantly available to use, no command required!
 
@@ -65,13 +65,13 @@ As you can see, all the action menus are instantly available to use, no command 
 
 It's really simple, you just send any HTTP/FTP/SFTP/Magnet url to chat, it will recognize and add it to Aria2 server!
 
-<img src="https://raw.githubusercontent.com/HouCoder/tele-aria2/HEAD/images/tele-aria2.download.gif" alt="start" width="400px">
+<img src="https://raw.githubusercontent.com//tele-aria2/HEAD/images/tele-aria2.download.gif" alt="start" width="400px">
 
 **But I want to download from a torrent file**
 
 No worries, just send your torrent file to chat!
 
-<img src="https://raw.githubusercontent.com/HouCoder/tele-aria2/HEAD/images/tele-aria2.bt.png" alt="start" width="400px">
+<img src="https://raw.githubusercontent.com//tele-aria2/HEAD/images/tele-aria2.bt.png" alt="start" width="400px">
 
 ## Docker
 
@@ -81,7 +81,7 @@ Run this bot as a Docker container, multi-architecture supported:
 $ docker run -it \
   -v ~/.tele-aria2.json:/tele-aria2/config.json \
   --net=host \
-  houcoder/tele-aria2
+  /tele-aria2
 ```
 
 Keep in mind, the `--net=host` option is required if you have `proxy` set in your config file.

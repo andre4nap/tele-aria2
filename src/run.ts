@@ -104,7 +104,7 @@ if (validateErrors.length) {
   const notificationMessage = [
     '⚠️ 0.2.0 has changed configuration format,',
     'be sure to update your configurations if you are migrating from 0.1.0,',
-    'visit https://github.com/HouCoder/tele-aria2 for more details',
+    'visit https://github.com//tele-aria2 for more details',
   ].join(' ');
 
   console.log(colors.red(notificationMessage));
