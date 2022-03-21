@@ -1,12 +1,10 @@
-import { HttpsProxyAgent } from 'https-proxy-agent';
-import Telegraf, { Markup, Context } from 'telegraf';
-import needle, { NeedleResponse } from 'needle';
+import {HttpsProxyAgent} from 'https-proxy-agent';
+import Telegraf, {Context, Markup} from 'telegraf';
+import needle, {NeedleResponse} from 'needle';
 import winston from 'winston';
 import Aria2 from './Aria2';
-import { TaskItem, Aria2EventTypes } from './typings';
-import {
-  byte2Readable, getFilename, progress, getGidFromAction, isDownloadable,
-} from './utilities';
+import {Aria2EventTypes, TaskItem} from './typings';
+import {byte2Readable, getFilename, getGidFromAction, isDownloadable, progress,} from './utilities';
 
 export default class Telegram {
   private bot: Telegraf<Context>;
@@ -300,10 +298,24 @@ export default class Telegram {
             this.remove(ctx);
             break;
           default:
-            const ariaArguments = inComingText.split(' ');
-            const file = ariaArguments.shift() || inComingText;
+            // eslint-disable-next-line no-case-declarations
+            const callArguments: any = {};
+            // eslint-disable-next-line no-case-declarations
+            const [file] = inComingText.split(' ', 1);
+            // eslint-disable-next-line no-case-declarations
+            const ariaArguments: string = inComingText.replace(file, '');
+            ariaArguments.split('--').forEach((item) => {
+              const values = item.split('=', 2).map((key) => key.trim());
+              if (values.length === 2) {
+                const [key, value] = values;
+                callArguments[key] = value.replace(/"/g, '');
+              }
+            });
+
+            // console.log(callArguments);
+
             if (isDownloadable(file)) {
-              this.aria2Server.send('addUri', [[file], ariaArguments.join(' ')]);
+              this.aria2Server.send('addUri', [[file], callArguments]);
             } else {
               this.logger.warn(`Unable to a parse the request: ${file}`);
             }
