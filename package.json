@@ -1,6 +1,6 @@
 {
-  "name": "tele-aria2",
-  "version": "0.2.2",
+  "name": "@andre4nap/tele-aria2",
+  "version": "0.2.3",
   "description": "Control your Aria2 server through Telegram",
   "homepage": "https://github.com/andre4nap/tele-aria2",
   "main": "./dist/run.js",
@@ -18,7 +18,7 @@
     "compile": "rm -rf dist && tsc && mv dist/src/* dist && rm -rf dist/test dist/src",
     "fix": "gts fix",
     "prepare": "npm run compile",
-    "start": "npm run compile && cd dist && node run.js --config ../.tele-aria2.config "
+    "start": "npm run compile && cd dist && node run.js --config ../.tele-aria2.config"
   },
   "keywords": [
     "Aria2",
@@ -29,7 +29,7 @@
     "type": "git",
     "url": "https://github.com/andre4nap/tele-aria2.git"
   },
-  "author": "andre4nap<andreacorso@gmail.com>",
+  "author": "andre4nap",
   "license": "MIT",
   "dependencies": {
     "@types/lodash": "^4.14.157",

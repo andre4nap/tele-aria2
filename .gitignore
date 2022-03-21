@@ -1,3 +1,4 @@
 node_modules
 dist
 .tele-aria2.config
+package-lock.json
